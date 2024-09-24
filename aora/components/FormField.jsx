@@ -17,7 +17,7 @@ const FormField = ({
     <View style={tw`space-y-2  ${otherStyles}`}>
       <Text style={tw`  text-base text-gray-100 font-pendium`}>{title}</Text>
       <View
-        style={tw` w-full border-black-200 border-2 h-16 px-4 justify-center bg-black-100 rounded-2xl focus:border-secondary `}
+        style={tw` w-full border-black-200 border-2 h-16 px-4 justify-center items-center bg-black-100 rounded-2xl focus:border-secondary  flex-row`}
       >
         <TextInput
           placeholder={placeholder}
@@ -27,9 +27,9 @@ const FormField = ({
           onChangeText={handleChangeText}
           style={tw` flex-1 text-white font-psemibold`}
           keyboardType={keyboardType}
-          secureTextEntry={title === "password" && !showPassword}
+          secureTextEntry={title === "Password" && !showPassword}
         />
-        {title === "password" && (
+        {title === "Password" && (
           <TouchableOpacity onPress={() => setshowPassword(!showPassword)}>
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}
