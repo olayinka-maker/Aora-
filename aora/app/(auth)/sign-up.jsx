@@ -5,6 +5,10 @@ import CustomButton from "../../components/CustomButton";
 import tw from "@/assets/lib/tailwind";
 import FormField from "../../components/FormField";
 import { Link } from "expo-router";
+import { account } from "../../libs/appwrite";
+import { createUser } from "../../libs/appwrite";
+
+import { useUser } from "../../context/userContext";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -14,30 +18,36 @@ const SignUp = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submit = () => {
+  // Function to register the user
+  const submit = async () => {
     setIsSubmitting(true);
+    createUser();
+    setIsSubmitting(false);
   };
 
   return (
-    <SafeAreaView style={tw` bg-primary  h-full`}>
+    <SafeAreaView style={tw`bg-primary h-full`}>
       <ScrollView>
-        <View style={tw`w-full flex my-6 min-h-[83vh] px-4 `}>
+        <View style={tw`w-full flex my-6 min-h-[83vh] px-4`}>
           <Image
             source={require("../../assets/images/logo.png")}
-            style={tw` w-[130px] h-[84px]`}
+            style={tw`w-[130px] h-[84px]`}
             resizeMode="contain"
           />
 
-          <Text style={tw`  text-semibold text-2xl font-psemibold text-white `}>
+          <Text style={tw`text-semibold text-2xl font-psemibold text-white`}>
             Sign Up{" "}
           </Text>
+
+          {/* Username field */}
           <FormField
             title="Username"
             value={form.username}
-            handleChangeText={(e) => setForm({ ...form, email: e })}
+            handleChangeText={(e) => setForm({ ...form, username: e })} // Corrected: sets username
             otherStyles="mt-7"
           />
 
+          {/* Email field */}
           <FormField
             title="Email"
             value={form.email}
@@ -45,23 +55,26 @@ const SignUp = () => {
             otherStyles="mt-7"
             keyboardType="email-address"
           />
+
+          {/* Password field */}
           <FormField
-            title={"Password"}
+            title="Password"
             value={form.password}
             handleChangeText={(e) => setForm({ ...form, password: e })}
-            otherStyles={"mt-7"}
+            otherStyles="mt-7"
           />
 
-          <Text style={tw` text-right text-gray-100 mt-4`}>
-            Forgot Password
-          </Text>
+          <Text style={tw`text-right text-gray-100 mt-4`}>Forgot Password</Text>
+
+          {/* Sign up button */}
           <CustomButton
             containerStyles="mt-6"
-            title={"Sign In"}
+            title="Sign Up" // Changed title to "Sign Up"
             handlePress={submit}
             isLoading={isSubmitting}
           />
 
+          {/* Navigation to sign in */}
           <View style={tw`flex justify-center pt-5 flex-row gap-2`}>
             <Text style={tw`text-lg text-gray-100 font-pregular`}>
               Have an account already?

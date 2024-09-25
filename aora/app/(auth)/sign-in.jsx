@@ -18,7 +18,7 @@ const SignIn = () => {
   };
 
   return (
-    <SafeAreaView style={tw` bg-primary  h-full`}>
+    <SafeAreaView style={tw` bg-primary flex-1`}>
       <ScrollView>
         <View style={tw`w-full flex my-6 min-h-[83vh] px-4 `}>
           <Image

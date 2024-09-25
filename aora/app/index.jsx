@@ -7,6 +7,8 @@ import className from "twrnc";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "../assets/lib/tailwind";
 import CustomButton from "../components/CustomButton";
+import "react-native-url-polyfill/auto";
+
 export default function App() {
   return (
     <SafeAreaView style={tw` bg-primary h-full`}>
