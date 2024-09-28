@@ -1,10 +1,10 @@
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, Alert } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../components/CustomButton";
 import tw from "@/assets/lib/tailwind";
 import FormField from "../../components/FormField";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { account } from "../../libs/appwrite";
 import { createUser } from "../../libs/appwrite";
 
@@ -21,7 +21,14 @@ const SignUp = () => {
   // Function to register the user
   const submit = async () => {
     setIsSubmitting(true);
-    createUser();
+    if (!form.email || !form.password || !form.username) {
+      Alert.alert("Error", "Please fill in all the fields");
+    }
+
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      router.replace("/home");
+    } catch (error) {}
     setIsSubmitting(false);
   };
 
