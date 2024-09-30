@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-
+import { GlobalProvider } from "@/context/userContext";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -30,10 +30,12 @@ export default function RootLayout() {
     return null;
   }
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-    </Stack>
+    <GlobalProvider>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      </Stack>
+    </GlobalProvider>
   );
 }
 
