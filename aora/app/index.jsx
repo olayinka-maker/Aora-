@@ -11,8 +11,8 @@ import "react-native-url-polyfill/auto";
 import { useGlobalContext } from "../context/userContext";
 
 export default function App() {
-  const { loggedIn, isLoading } = useGlobalContext();
-  if (!isLoading && loggedIn) return <Redirect href={"/home"} />;
+  const { loggedIn, IsLoading } = useGlobalContext();
+  if (!IsLoading && loggedIn) return <Redirect href={"/home"} />;
   return (
     <SafeAreaView style={tw` bg-primary h-full`}>
       <ScrollView contentContainerStyle={{ height: "100%" }}>

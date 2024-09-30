@@ -16,7 +16,7 @@ export function GlobalProvider(props) {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          setUser(user);
+          setUser(res);
         } else {
           setLoggedIn(false);
           setUser(null);
@@ -61,7 +61,7 @@ export function GlobalProvider(props) {
   // }, []);
 
   return (
-    <GlobalContext.Provider value={{ user, loggedIn, isLoading }}>
+    <GlobalContext.Provider value={{ user, loggedIn, IsLoading }}>
       {props.children}
     </GlobalContext.Provider>
   );

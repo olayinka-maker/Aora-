@@ -9,7 +9,7 @@ import {
 
 export const config = {
   databaseId: "66f47c3a0022dff8135a",
-  usercollection: "66f47c900012a3da3d52",
+  usercollection: "66f47c8100114a89280a",
   videocollection: "66f47c900012a3da3d52",
   fileId: "66f4a0580023c1d01acb",
 };
@@ -65,6 +65,7 @@ export async function signIn(email, password) {
   try {
     const session = await account.createEmailPasswordSession(email, password);
     return session;
+    console.log(session);
   } catch (error) {
     console.log(error);
     throw new Error(error);
